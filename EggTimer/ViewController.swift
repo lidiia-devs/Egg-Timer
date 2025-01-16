@@ -14,31 +14,39 @@ class ViewController: UIViewController {
     
     var secondsRemaining = 60
     
+    var timer = Timer()
+    @IBOutlet weak var titleLable: UILabel!
+    
     @IBAction func hardnessSelected(_ sender: UIButton) {
+        
+        timer.invalidate() // stops and runs from scratch
         
         let hardness = sender.currentTitle! //Soft, Medium, Hard
         
-        secondsRemaining = eggTimer[hardness]!
-        
-        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+         secondsRemaining = eggTimer[hardness]!
+       
+         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
     }
     
-        @objc func updateCounter() {
-            //example functionality
-            if secondsRemaining > 0 {
-                print("\(secondsRemaining) seconds")
-                secondsRemaining -= 1
-            }
-                }
+    @objc func updateCounter() {
+        //example functionality
+        if secondsRemaining > 0 {
+            print("\(secondsRemaining) seconds")
+            secondsRemaining -= 1
+        } else {
+            titleLable.text = "DONE!"
+            timer.invalidate()
+        }
+    }
+    
+    
+}
 
-   
-    }
-    
-    
+
 
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
 
-   
-    //}
+
+//}
 
