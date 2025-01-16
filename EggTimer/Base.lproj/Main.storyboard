@@ -2,9 +2,9 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -121,9 +121,26 @@
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJN-th-c5K" userLabel="Timer View">
                                         <rect key="frame" x="0.0" y="571.33333333333337" width="374" height="246.66666666666663"/>
+                                        <subviews>
+                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="R51-N9-42H">
+                                                <rect key="frame" x="0.0" y="118.33333333333326" width="374" height="10"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="10" id="ePS-bd-p9k"/>
+                                                </constraints>
+                                                <color key="progressTintColor" systemColor="systemYellowColor"/>
+                                                <color key="trackTintColor" systemColor="secondaryLabelColor"/>
+                                            </progressView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="R51-N9-42H" firstAttribute="leading" secondItem="nJN-th-c5K" secondAttribute="leading" id="Dri-hW-hUs"/>
+                                            <constraint firstItem="R51-N9-42H" firstAttribute="centerY" secondItem="nJN-th-c5K" secondAttribute="centerY" id="TFS-S4-9l2"/>
+                                            <constraint firstAttribute="trailing" secondItem="R51-N9-42H" secondAttribute="trailing" id="ndq-6n-n2y"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="nJN-th-c5K" secondAttribute="trailing" id="Bqf-Km-rZ7"/>
+                                    <constraint firstItem="nJN-th-c5K" firstAttribute="leading" secondItem="wI6-ag-afn" secondAttribute="leading" id="aSC-85-GYm"/>
                                     <constraint firstItem="Q3H-nl-7AG" firstAttribute="leading" secondItem="XLm-5r-pSP" secondAttribute="trailing" constant="-242.66666666666666" id="kPR-Nt-9cD"/>
                                 </constraints>
                             </stackView>
@@ -138,7 +155,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="titleLable" destination="XLm-5r-pSP" id="xZX-TJ-REe"/>
+                        <outlet property="progressBar" destination="R51-N9-42H" id="5WO-ZG-B3B"/>
+                        <outlet property="timerLabel" destination="XLm-5r-pSP" id="xZX-TJ-REe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -150,5 +168,11 @@
         <image name="hard_egg" width="287.66665649414062" height="366.33334350585938"/>
         <image name="medium_egg" width="288" height="363.33334350585938"/>
         <image name="soft_egg" width="287" height="365.33334350585938"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
